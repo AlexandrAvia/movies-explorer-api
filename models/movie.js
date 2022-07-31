@@ -15,7 +15,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
   },
   year: {
-    type: Number,
+    type: String,
     required: true,
   },
   description: {
@@ -29,6 +29,7 @@ const movieSchema = new mongoose.Schema({
       validator(v) {
         return valid.isURL(v);
       },
+      message: 'Введите корректный URL',
     },
   },
   trailerLink: {
@@ -38,6 +39,7 @@ const movieSchema = new mongoose.Schema({
       validator(v) {
         return valid.isURL(v);
       },
+      message: 'Введите корректный URL',
     },
   },
   thumbnail: {
@@ -47,6 +49,7 @@ const movieSchema = new mongoose.Schema({
       validator(v) {
         return valid.isURL(v);
       },
+      message: 'Введите корректный URL',
     },
   },
   owner: {
@@ -55,7 +58,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
   },
   movieId: {
-    type: String,
+    type: Number,
     required: true,
   },
   nameRU: {
