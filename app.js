@@ -16,13 +16,13 @@ const options = {
   origin: [
     'http://localhost:3000',
     'http://localhost:3001',
-    'http://api.alexavia.mesto.nomoredomains.xyz',
-    'https://api.alexavia.mesto.nomoredomains.xyz',
+    'http://api.diploma93.nomoredomains.sbs',
+    'https://api.diploma93.nomoredomains.sbs',
   ],
   credentials: true,
 };
 
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb');
+mongoose.connect('mongodb://localhost:27017/moviesdb');
 
 app.use(requestLogger);
 app.use('*', cors(options));
