@@ -9,7 +9,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const limiter = require('./middlewares/limiter');
 const router = require('./routes/index');
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3001, MONGO = 'mongodb://localhost:27017/moviesdb' } = process.env;
 const app = express();
 
 const options = {
@@ -22,7 +22,7 @@ const options = {
   credentials: true,
 };
 
-mongoose.connect('mongodb://localhost:27017/moviesdb');
+mongoose.connect(MONGO);
 
 app.use(requestLogger);
 app.use('*', cors(options));
@@ -39,7 +39,7 @@ app.use(errors());
 app.use((err, req, res, next) => {
   const { statusCode, message } = err;
   if (!statusCode) {
-    res.status(500).send('Внутрення ошибка сервера');
+    res.status(500).send({ message: 'Внутрення ошибка сервера' });
   }
   res.status(statusCode).send({ message });
   next();
